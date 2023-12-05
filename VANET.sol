@@ -72,10 +72,13 @@ contract VANET {
             vehicleMapping[_vehicleAddress].isRegistered == false,
             "This vehicle is already registered"
         );
-
+        // Computing a secret key by usin Keccak256 hashing algorithm
         bytes32 secret = keccak256(
             abi.encodePacked(_vehicleAddress, _vehicleDetails)
         );
+
+        // Computing a public key using the secret key generated
+        // Therefore the public key and secret key becomes linked.
         address publicKey = address(
             uint160(uint256(keccak256(abi.encodePacked(secret))))
         );
