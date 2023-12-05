@@ -39,7 +39,7 @@ contract VANET {
         string memory _rsuID,
         string memory _vtCode
     ) public onlyTrustedAuthority {
-        require(msg.sender != address(0));
+        require(_rsuAddress != address(0));
         require(
             rsuMapping[_rsuAddress].isRegistered == false,
             "This RSU has already been registered"
